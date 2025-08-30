@@ -1,0 +1,27 @@
+spring:
+    config:
+      activate:
+          on-profile: torque-prod
+    application:
+        name: DEVICE-EMULATION-SERVICE
+
+device-emulation:
+    device-id: "ZZ:ZZ:ZZ:ZZ:CT"
+    connection-string: ${CORE_TORQUE_CONNECTION_STRING}
+    board-type: "CORE_ETHERNET"
+
+    kpis:
+        kpis0to20: "1500.1, 56.27, 190.0, 210.0, 200.0, 0.71, 0.18, 0.7, 0.15, 0.12, 0.35, 0.05, 0.26, 1.15, 0.1, 0.27, 1.05, 0.04, 0.08, 0.33, 0.01"
+        kpis21to41: "0.035, 0.06, 0.23, 0.26, 0.14, 0.16, 0.2, 0.11, 0.12, 0.17, 0.1, 0.05, 0.026, 0.055, 0.04, 0.032, 0.015, 0.024, 0.037"
+
+    uuids:
+        job-60min: "b24afd12-e135-420c-8f12-6d308d9b87ed"
+        job-7days: "04f10e5f-941e-47e6-a763-4a0440515874"
+        job-90days: "831eba3e-c28e-4452-9ca6-0b26e741ca56"
+        job-3years: "c960d65b-5c86-416f-a8c1-1f2cd9e8ee4d"
+        job-temp-speed-classification: "6f6af750-dc08-4b00-8ff2-4042c388f7cd"
+        job-start-temp-classification: "259ac002-6c57-48b6-be50-6ca01edea60a"
+        job-speed-torque-classification: "30d7f34a-6060-4fbf-a714-6eea91bae1de"
+        job-operation-counters: "c502e909-2a55-4ffd-ab14-11e868b0ff41"
+        damage-indicator-kpi: ""    # empty for AIQ Core Torque
+

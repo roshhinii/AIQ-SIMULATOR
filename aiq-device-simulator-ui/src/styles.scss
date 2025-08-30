@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* CSS Custom Properties (Variables) */
+:root {
+  /* Colors */
+  --primary-gradient-start: #667eea;
+  --primary-gradient-end: #764ba2;
+  --primary-color: #667eea;
+  --primary-color-dark: #5a67d8;
+  --primary-color-rgb: 102, 126, 234;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #e74c3c;
+  --error-color: #ef4444;
+  --info-color: #17a2b8;
+  
+  /* Text Colors */
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-muted: #adb5bd;
+  --text-white: #ffffff;
+  --text-light: #e9ecef;
+  
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-dark: #343a40;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --bg-muted: #f1f3f4;
+  --bg-hover: rgba(255, 255, 255, 0.1);
+  --bg-active: rgba(255, 255, 255, 0.2);
+  
+  /* Dark Mode Colors */
+  --dark-bg-primary: #1a1a1a;
+  --dark-bg-secondary: #2d3748;
+  --dark-bg-card: #2d3748;
+  --dark-bg-input: #4a5568;
+  --dark-bg-muted: #374151;
+  --dark-text-primary: #e9ecef;
+  --dark-text-secondary: #adb5bd;
+  
+  /* Border Colors */
+  --border-color: #e1e5e9;
+  --border-focus: var(--primary-color);
+  --border-error: var(--danger-color);
+  --dark-border-color: #4a5568;
+  
+  /* Spacing */
+  --title-bar-height: 44px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-large: 12px;
+  --border-radius-sm: 6px;
+  --border-radius-small: 6px;
+  --border-radius-pill: 20px;
+  
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-size-xs: 0.8rem;
+  --font-size-sm: 0.85rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.1rem;
+  --font-size-xl: 1.3rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-button: 0 5px 15px rgba(102, 126, 234, 0.3);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Z-index levels */
+  --z-title-bar: 1000;
+  --z-modal: 1100;
+  --z-tooltip: 1200;
+}
+
+/* Dark mode variable overrides */
+body.dark-mode {
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --bg-primary: var(--dark-bg-primary);
+  --bg-secondary: var(--dark-bg-primary);
+  --bg-card: var(--dark-bg-card);
+  --bg-input: var(--dark-bg-input);
+  --border-color: var(--dark-border-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: var(--title-bar-height);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--text-primary);
+  transition: var(--transition-normal);
+  overflow: hidden;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

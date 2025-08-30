@@ -1,0 +1,27 @@
+spring:
+    config:
+      activate:
+          on-profile: io-prod
+    application:
+        name: DEVICE-EMULATION-SERVICE
+
+device-emulation:
+    device-id: "ZZ:ZZ:ZZ:ZZ:IO"
+    connection-string: ${CORE_IO_CONNECTION_STRING}
+    board-type: "CORE_WIFI"
+    # damaged-kpi: "21" #--> see CoreIOTrendGenerator21to41
+
+    kpis:
+        kpis0to20: "1500.1, 56.27, 0.71, 0.18, 0.26, 0.15, 0.12, 0.35, 0.05, 0.26, 1.15, 0.1, 0.27, 1.05, 0.04, 0.08, 0.33, 0.01, 0.035, 0.06, 0.23"
+        kpis21to41: "0.26, 0.14, 0.16, 0.2, 0.11, 0.12, 0.17, 0.1, 0.05, 0.026, 0.055, 0.04, 0.032, 0.015, 0.024, 0.037"
+
+    uuids:
+        job-60min: "7789deb0-7c84-416d-bf0d-ba5b8962804b"
+        job-7days: "2a57c1ff-f577-4fef-8486-c3f61b969d6b"
+        job-90days: "849dafb2-5c48-4fd7-901c-ec3802ad8c24"
+        job-3years: "11d45238-19c5-4db4-bd3f-18a58c589359"
+        job-operation-counters: "108f2e87-2b67-4e9e-8153-84172dfb0b4c"
+        job-temp-speed-classification: "2493966f-ac98-4fae-81b2-ab67f6ea300a"
+        job-start-temp-classification: "5a2f5814-8ad4-4855-a677-2b7a655a8e35"
+        job-speed-torque-classification: ""     # empty for AIQ Core IO
+        damage-indicator-kpi: "38202332-2959-420a-bc99-1cd4069a77d0"

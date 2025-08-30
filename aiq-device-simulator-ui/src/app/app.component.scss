@@ -1,0 +1,12 @@
+// App root styles - minimal since routing handles the layout
+:host {
+  display: block;
+  height: 100vh;
+}
+
+.app-content {
+  height: calc(100vh - var(--title-bar-height));
+  overflow: auto;
+}
+
+// Global app styles can go here if needed

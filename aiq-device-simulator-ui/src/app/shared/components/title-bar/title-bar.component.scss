@@ -1,0 +1,298 @@
+.title-bar {
+  height: var(--title-bar-height);
+  background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-title-bar);
+  -webkit-app-region: drag; /* Make title bar draggable */
+  user-select: none;
+  font-family: var(--font-family);
+}
+
+.title-bar-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  position: relative;
+  justify-content: space-between;
+}
+
+.app-title {
+  color: var(--text-white);
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none; /* Prevent interference with dragging */
+}
+
+// Environment Indicators
+.environment-indicators {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+// Unified Indicator System
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: var(--border-radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--transition-fast);
+  position: relative;
+
+  .indicator-label {
+    font-size: 9px;
+    font-weight: var(--font-weight-medium);
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.8); // Red for default/inactive state
+    transition: background-color var(--transition-fast);
+  }
+
+  &.good .indicator-dot {
+    background: rgb(34, 197, 94); // Green for good/active state
+  }
+}
+
+// Backend indicator (non-clickable, but hoverable for tooltip)
+.backend-indicator {
+  cursor: default;
+}
+
+// Status Indicators
+.status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  -webkit-app-region: no-drag;
+}
+
+.status-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .status-label {
+    font-size: 11px;
+    font-weight: var(--font-weight-medium);
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+// Environment Tooltip
+.env-tooltip {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  padding: 12px;
+  box-shadow: 0 8px 25px -4px rgba(0, 0, 0, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+  z-index: calc(var(--z-title-bar) + 1);
+  min-width: 200px;
+  transform: translateX(-50%);
+  -webkit-app-region: no-drag;
+  backdrop-filter: blur(10px);
+
+  // Add a pseudo-element to create a bridge between indicator and tooltip
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 10px;
+    background: transparent;
+  }
+
+  .tooltip-content {
+    .user-info {
+      margin-bottom: 8px;
+
+      .user-name {
+        display: block;
+        font-size: 13px;
+        font-weight: var(--font-weight-medium);
+        color: rgba(0, 0, 0, 0.9);
+        margin-bottom: 2px;
+      }
+
+      .user-org {
+        display: block;
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    .login-info {
+      display: block;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.6);
+      font-style: italic;
+    }
+
+    .backend-info {
+      .backend-url {
+        display: block;
+        font-size: 13px;
+        font-weight: var(--font-weight-medium);
+        color: rgba(0, 0, 0, 0.9);
+        margin-bottom: 2px;
+      }
+
+      .backend-endpoint {
+        display: block;
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.6);
+        font-family: monospace;
+      }
+    }
+
+    .tooltip-logout-btn,
+    .tooltip-login-btn {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: var(--border-radius-sm);
+      font-size: 11px;
+      font-weight: var(--font-weight-medium);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border: none;
+      margin-top: 8px;
+    }
+
+    .tooltip-logout-btn {
+      background: rgba(239, 68, 68, 0.1);
+      color: rgb(185, 28, 28);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+
+      &:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: rgba(239, 68, 68, 0.3);
+        color: rgb(153, 27, 27);
+      }
+    }
+
+    .tooltip-login-btn {
+      background: rgba(59, 130, 246, 0.1);
+      color: rgb(29, 78, 216);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+
+      &:hover {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: rgba(59, 130, 246, 0.3);
+        color: rgb(30, 64, 175);
+      }
+    }
+  }
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  -webkit-app-region: no-drag; /* Prevent dragging on control buttons */
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: var(--title-bar-height);
+  border: none;
+  background: transparent;
+  color: var(--text-white);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  font-size: 16px;
+  padding: 0;
+
+  &:hover {
+    background-color: var(--bg-hover);
+  }
+
+  &:active {
+    background-color: var(--bg-active);
+  }
+
+  .control-icon {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: normal;
+    
+    &.maximized {
+      font-size: 10px;
+    }
+  }
+}
+
+.minimize-btn {
+  .control-icon {
+    font-size: 14px;
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+.maximize-btn {
+  .control-icon {
+    font-size: 11px;
+  }
+}
+
+.close-btn {
+  &:hover {
+    background-color: var(--danger-color);
+  }
+
+  &:active {
+    background-color: #c0392b;
+  }
+
+  .control-icon {
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+
+// Login modal overrides for title bar context
+:host ::ng-deep .modal-overlay {
+  z-index: calc(var(--z-title-bar) + 10);
+}
+
+:host ::ng-deep .modal-content {
+  z-index: calc(var(--z-title-bar) + 11);
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .app-title {
+    font-size: var(--font-size-xs);
+    margin: 0 8px;
+  }
+  
+  .control-btn {
+    width: 40px;
+  }
+}

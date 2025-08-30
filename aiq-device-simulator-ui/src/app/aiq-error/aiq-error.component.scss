@@ -1,0 +1,130 @@
+.aiq-error-container {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.error-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  
+  .error-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+  
+  h4 {
+    margin: 0;
+    color: #dc2626;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.error-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  .error-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    
+    @media (min-width: 640px) {
+      flex-direction: row;
+      gap: 8px;
+      align-items: baseline;
+    }
+    
+    .field-label {
+      font-weight: 600;
+      color: #7f1d1d;
+      font-size: 14px;
+      min-width: 80px;
+      
+      @media (min-width: 640px) {
+        flex-shrink: 0;
+      }
+    }
+    
+    .field-value {
+      color: #991b1b;
+      font-size: 14px;
+      word-break: break-word;
+      
+      &.trace-id {
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 12px;
+        background: #fee2e2;
+        padding: 2px 6px;
+        border-radius: 4px;
+        border: 1px solid #fecaca;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .aiq-error-container {
+    background: #2d1b1b;
+    border-color: #5b2626;
+  }
+  
+  .error-header h4 {
+    color: #f87171;
+  }
+  
+  .error-details .error-field {
+    .field-label {
+      color: #dc2626;
+    }
+    
+    .field-value {
+      color: #fca5a5;
+      
+      &.trace-id {
+        background: #3f1f1f;
+        border-color: #5b2626;
+        color: #fca5a5;
+      }
+    }
+  }
+}
+
+// Compact variant for smaller spaces
+.aiq-error-container.compact {
+  padding: 12px;
+  
+  .error-header {
+    margin-bottom: 8px;
+    
+    .error-icon {
+      font-size: 16px;
+    }
+    
+    h4 {
+      font-size: 14px;
+    }
+  }
+  
+  .error-details .error-field {
+    gap: 4px;
+    
+    .field-label,
+    .field-value {
+      font-size: 13px;
+    }
+    
+    .field-value.trace-id {
+      font-size: 11px;
+    }
+  }
+}

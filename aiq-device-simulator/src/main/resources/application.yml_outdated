@@ -1,0 +1,25 @@
+spring:
+    application:
+        name: DEVICE-EMULATION-SERVICE
+
+device-emulation:
+    device-id: ""
+    connection-string: ""                      # device connection string from iot hub
+    board-type: ""                             # "CORE_WIFI" or "CORE_ETHERNET"
+
+    # Up to 41 kpi values to be generated:
+    # (By default, kpi21 will be generated as damaged trend)
+    kpis:
+        kpis0to20: ""
+        kpis21to41: ""
+
+    uuids:
+        job-60min: ""
+        job-7days: ""
+        job-90days: ""
+        job-3years: ""
+        job-temp-speed-classification: ""
+        job-start-temp-classification: ""
+        job-operation-counters: ""
+        job-speed-torque-classification: ""    # empty for AIQ Core IO
+        damage-indicator-kpi: ""               # empty for AIQ Core Torque
