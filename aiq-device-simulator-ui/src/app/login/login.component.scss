@@ -1,0 +1,167 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  
+  // Prevent any scrolling behavior
+  overscroll-behavior: none;
+  touch-action: none;
+  
+  // Background image with blur and brightness effects
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/assets/gear.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px) brightness(0.4);
+    z-index: -1;
+  }
+  
+  // Overlay to ensure content is readable
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: -1;
+  }
+}
+
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: normal;
+  color: #333;
+  margin: 0;
+}
+
+.skip-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.skip-button:hover {
+  background-color: #f0f0f0;
+}
+
+.login-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.login-card {
+  width: 500px;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.login-title {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 30px 0;
+  color: #333;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+  font-weight: normal;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.form-control select {
+  cursor: pointer;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #87CEEB;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.login-button:hover:not(:disabled) {
+  background-color: #7BC5E0;
+}
+
+.login-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

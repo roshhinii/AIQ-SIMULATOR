@@ -1,6 +1,6 @@
 .title-bar {
   height: var(--title-bar-height);
-  background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+  background: #000000;
   display: flex;
   align-items: center;
   position: fixed;
@@ -20,7 +20,7 @@
   height: 100%;
   padding: 0 16px;
   position: relative;
-  justify-content: space-between;
+  justify-content: flex-end; /* Push window controls to the right */
 }
 
 .app-title {

@@ -1,9 +1,14 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddSimulatorComponent } from './add-simulator/add-simulator.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { 
+    path: 'login', 
+    component: LoginComponent
+  },
   { 
     path: 'dashboard', 
     component: DashboardComponent
@@ -12,5 +17,5 @@ export const routes: Routes = [
     path: 'add-simulator', 
     component: AddSimulatorComponent
   },
-  { path: '**', redirectTo: '/dashboard' }
+  { path: '**', redirectTo: '/login' }
 ];

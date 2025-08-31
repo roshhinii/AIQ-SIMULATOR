@@ -20,46 +20,6 @@ declare global {
   template: `
     <div class="title-bar" (mousedown)="startDrag($event)">
       <div class="title-bar-content">
-        <div class="app-title">
-          <!-- Title removed -->
-        </div>
-        
-        <!-- Status Indicators -->
-        <div class="status-indicators">
-          <!-- Environments Section -->
-          <div class="status-group">
-            <span class="status-label">Environments</span>
-            <div class="environment-indicators">
-              <div 
-                *ngFor="let env of environments" 
-                class="indicator env-indicator"
-                [class.good]="isLoggedInToEnvironment(env)"
-                (mouseenter)="showTooltip(env, $event)"
-                (mouseleave)="hideTooltip()"
-                [title]="getEnvironmentLabel(env)">
-                <span class="indicator-label">
-                  {{ getEnvironmentShortName(env) }}
-                </span>
-                <div class="indicator-dot"></div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Simulator Service Health Section -->
-          <div class="status-group">
-            <span class="status-label">Simulator Service</span>
-            <div class="environment-indicators">
-              <div class="indicator backend-indicator" 
-                   [class.good]="isSimulatorServiceHealthy"
-                   (mouseenter)="showBackendTooltip($event)"
-                   (mouseleave)="hideTooltip()">
-                <span class="indicator-label">Health</span>
-                <div class="indicator-dot"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
         <div class="window-controls">
           <button 
             class="control-btn minimize-btn" 
@@ -83,52 +43,6 @@ declare global {
           </button>
         </div>
       </div>
-      
-      <!-- Tooltips -->
-      <div class="env-tooltip" 
-           *ngIf="tooltipVisible && hoveredEnv && hoveredEnv !== 'backend'" 
-           [style.left.px]="tooltipPosition.x" 
-           [style.top.px]="tooltipPosition.y"
-           (mouseenter)="onTooltipEnter()"
-           (mouseleave)="onTooltipLeave()">
-        <div class="tooltip-content" *ngIf="isLoggedInToEnvironment(hoveredEnv)">
-          <div class="user-info" *ngIf="getEnvironmentSession(hoveredEnv) as session">
-            <span class="user-name">{{ session.user.email || (session.user.fname + ' ' + session.user.lname) }}</span>
-            <span class="user-org">{{ session.user.orgName || 'No Organization' }}</span>
-          </div>
-          <button class="tooltip-logout-btn" (click)="logoutFromEnvironment(hoveredEnv)">
-            Logout
-          </button>
-        </div>
-        <div class="tooltip-content" *ngIf="!isLoggedInToEnvironment(hoveredEnv)">
-          <button class="tooltip-login-btn" (click)="loginToEnvironment(hoveredEnv)">
-            Login
-          </button>
-        </div>
-      </div>
-
-      <!-- Backend Tooltip -->
-      <div class="env-tooltip" 
-           *ngIf="tooltipVisible && hoveredEnv === 'backend'" 
-           [style.left.px]="tooltipPosition.x" 
-           [style.top.px]="tooltipPosition.y"
-           (mouseenter)="onTooltipEnter()"
-           (mouseleave)="onTooltipLeave()">
-        <div class="tooltip-content">
-          <div class="backend-info">
-            <span class="backend-url">{{ getBackendUrl() }}</span>
-            <span class="backend-endpoint">/actuator/health</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Login Modal -->
-      <app-login-modal
-        [isVisible]="showLoginModal"
-        [environment]="loginEnvironment"
-        (loginSuccess)="onLoginSuccess()"
-        (modalClosed)="onLoginModalClosed()">
-      </app-login-modal>
     </div>
   `,
   styleUrls: ['./title-bar.component.scss']
